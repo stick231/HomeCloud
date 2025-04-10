@@ -13,13 +13,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_telegram_id')->unique(); // Telegram ID
             $table->string('name');
+            $table->enum('role', ['admin', 'sub_admin', 'user'])->default('user');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->bigInteger('max_storage_size')->default(10 * 1024 * 1024 * 1024); // 10 GB default
+            $table->boolean('is_telegram_user')->default(false);
+            $table->timestamp('last_activity')->nullable(); // Вместо timecheck
             $table->timestamps();
         });
+        
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();

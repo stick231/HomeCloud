@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #55c7f5;
+    padding: 20px;
+}
+
+.logo {
+    border-radius: 15%;
+    width: 100px; 
+    height: auto;
+}
+
+
+.search-bar input {
+    padding: 12px 20px;
+    width: 300px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.container {
+    display: flex;
+    background: #55c7f5;
+    padding: 20px;
+    min-height: 80vh;
+    gap: 20px;
+}
+
+aside {
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.menu{
+    background: #55c7f5;
+    padding: 10px;
+    border-radius: 10px;
+    width: 110px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.menu:hover {
+    background: #3db3e2;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.files {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    max-width: 320px;
+}
+
+.file-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-weight: 600;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.file-card:hover {
+    transform: translateY(-5px);
+}
+
+main {
+    flex-grow: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+footer {
+    background: #55c7f5;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* -------- Мобильная адаптация -------- */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    aside {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        padding: 10px;
+    }
+
+    main {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .files {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+    }
+
+    .file-card {
+        padding: 12px;
+    }
+
+    header, footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 18px;
+        padding: 8px 14px;
+    }
+
+    .search-bar input {
+        width: 90%;
+    }
+}
