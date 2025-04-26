@@ -4,7 +4,6 @@
 <h1>Register</h1>
 <form method="POST" action="{{ route('auth.register') }}">{{--{{ route('register') }} --}}
   @csrf
-  @method("POST")
   <input type="text" name="name" placeholder="Name" required>
   <input type="email" name="email" placeholder="Email" required>
   <input type="password" name="password" placeholder="Password" required>
@@ -20,5 +19,5 @@
         </ul>
     </div>
 @endif
-<p>Already have an account? <a href="{{ route('login.form') }}">Login</a></p>
+<p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
 @endsection

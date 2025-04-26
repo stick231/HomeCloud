@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_telegram_id')->unique(); // Telegram ID
+            $table->bigInteger('user_telegram_id')->unique()->nullable(); // Telegram ID
             $table->string('name');
             $table->enum('role', ['admin', 'sub_admin', 'user'])->default('user');
             $table->string('email')->unique();
