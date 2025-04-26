@@ -14,6 +14,19 @@ class FileController extends Controller
     
     public function index()
     {
-        return view('userFile.home');
+        return view('userFile.home');// должен проверять пользователя и выдавать ему те файлы которые находятся в его папке
     }
+
+    public function create()
+    {
+// формочка чтобы загрузить файл
+    }
+    public function store()
+    {
+
+// загрузка пути файла в бд и тд 
+    }
+
+    // сделать создание папки которая бы к тому отображалась на экране
 }
+

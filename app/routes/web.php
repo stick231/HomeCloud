@@ -17,8 +17,8 @@ Route::resource('/trash', TrashController::class);
 Route::resource('/settings', SettingController::class);
 
 // auth
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
 
 Route::prefix('auth')->group(function () {

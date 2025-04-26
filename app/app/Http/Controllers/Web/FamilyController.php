@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class FamilyController extends Controller
 {
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
-
     public function index()
     {
         return view('family.index');
