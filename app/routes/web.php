@@ -17,12 +17,13 @@ Route::resource('/trash', TrashController::class);
 Route::resource('/settings', SettingController::class);
 
 // auth
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-
 
 Route::prefix('auth')->group(function () {
-    Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login.form');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('auth.register.form');
+    Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
 });
+
 
