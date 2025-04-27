@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->string('path');
-            $table->bigInteger('size');
-            $table->enum('visibility', ['all', 'sub_admin', 'owner'])->default('owner');
+            $table->string('name'); // Имя файла или папки
+            $table->string('path'); // Путь внутри storage
+            $table->bigInteger('size')->default(0); // Размер в байтах, для папок можно оставлять 0
+            $table->string('mime_type')->nullable(); // Тип файла (например, image/png, application/pdf)
+            $table->boolean('is_folder')->default(false); // Это папка или файл
+            $table->foreignId('parent_id')->nullable()->constrained('files')->onDelete('cascade'); 
+            $table->enum('visibility', ['private', 'family', 'public'])->default('private');
             $table->boolean('virus_checked')->default(false);
             $table->boolean('is_infected')->default(false);
             $table->timestamps();

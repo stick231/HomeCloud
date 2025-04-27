@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
-class AuthService{
+class AuthService
+{
     public function register(RegisterUserRequest $request)
     {
         $data = $request->validated(); // name, и тд 
@@ -28,7 +29,8 @@ class AuthService{
         $user = User::where('email', $data['email'])->first();
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return false;
+            // return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
         Auth::login($user);
