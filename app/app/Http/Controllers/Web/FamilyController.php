@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddMemberRequest;
+use App\Http\Requests\FamilyCreateRequest;
 use App\Models\Family;
 use app\Services\FamilyService;
 use Illuminate\Http\Request;
@@ -12,18 +14,20 @@ class FamilyController extends Controller
     public function index(FamilyService $familyService)
     {
         $families = $familyService->getFamily();
-        return view('family.index')->with('families', $families);
+        $users = $familyService->getUsers();
+        return view('family.index', compact('families', 'users'));
     }
     public function create()
     {
         return view('family.create');
     }
-    public function store(Request $request)
+    public function store(FamilyCreateRequest $request, FamilyService $familyService)
     {
-        // Здесь будет логика для сохранения данных о семье
-        // Например, валидация и сохранение в базу данных
+        $familyService->createFamily($request);
+
         return redirect()->route('family.index')->with('success', 'Семья успешно добавлена!');
     }
+
     public function show($id)
     {
         // Здесь будет логика для отображения информации о конкретной семье
@@ -43,5 +47,12 @@ class FamilyController extends Controller
     {
         // Здесь будет логика для удаления информации о семье
         return redirect()->route('family.index')->with('success', 'Семья успешно удалена!');
+    }
+
+    public function addMember(AddMemberRequest $request, FamilyService $familyService)
+    {
+        $familyService->addMember($request);
+
+        return redirect()->route('family.index')->with('success', 'Пользователь успешно добавлен в семью!');
     }
 }
