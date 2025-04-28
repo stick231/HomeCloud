@@ -13,4 +13,5 @@
     <p><strong>Name:</strong> {{ $user->name }}</p>
     <p><strong>Email:</strong> {{ $user->email }}</p>
     <p><strong>Created At:</strong> {{ $user->created_at }}</p>
+    <p><strong>Your role:</strong> {{ $user->role }}</p>
 @endsection

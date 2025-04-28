@@ -7,14 +7,18 @@ use App\Http\Controllers\Web\TrashController;
 use App\Http\Controllers\Web\FileController;
 use App\Http\Controllers\Web\SettingController;
 use App\Http\Controllers\Web\AuthController;
+use App\Http\Middleware\RedirectIfNotAuthenticated;
 
+// home page //prefix('/cloud')
+Route::middleware(RedirectIfNotAuthenticated::class)->group(function () {
+    Route::resource("/", FileController::class);
+    Route::resource('/family', FamilyController::class);
+    Route::resource('/user', UserController::class);
+    Route::resource('/trash', TrashController::class);
+    Route::resource('/settings', SettingController::class);
 
-// home page
-Route::resource("/", FileController::class);
-Route::resource('/family', FamilyController::class);
-Route::resource('/user', UserController::class);
-Route::resource('/trash', TrashController::class);
-Route::resource('/settings', SettingController::class);
+    Route::post('family/addMember', [FamilyController::class, 'addMember'])->name('family.addMember');
+});
 
 // auth
 

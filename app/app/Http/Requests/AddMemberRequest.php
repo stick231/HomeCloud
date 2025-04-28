@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FileUserRequest extends FormRequest
+class AddMemberRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,9 @@ class FileUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|file', // до 10MB
-            'visibility' => 'required|in:all,sub_admin,owner',
+            'family_id' => 'required|exists:families,id',
+            'user_id' => 'required|exists:users,id',
+            'role' => 'required|string|max:255',
         ];
     }
 }
