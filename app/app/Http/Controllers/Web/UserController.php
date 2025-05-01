@@ -19,16 +19,6 @@ class UserController extends Controller
         return view('user.index')->with('user', $user);
     }
 
-    public function store()
-    {
-
-    }
-
-    public function show()
-    {
-
-    }
-
     public function edit()
     {
         

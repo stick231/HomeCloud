@@ -4,20 +4,23 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\FamilyController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\TrashController;
-use App\Http\Controllers\Web\FileController;
 use App\Http\Controllers\Web\SettingController;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Middleware\RedirectIfNotAuthenticated;
+use App\Http\Controllers\Web\CloudController;
+use App\Http\Controllers\Web\FamilyFilesController;
 
 // home page //prefix('/cloud')
 Route::middleware(RedirectIfNotAuthenticated::class)->group(function () {
-    Route::resource("/", FileController::class);
-    Route::resource('/family', FamilyController::class);
-    Route::resource('/user', UserController::class);
+    Route::get('/', [CloudController::class, 'index']); // домашняя страница
+    Route::resource('my-cloud', CloudController::class);
+    Route::resource('my-family', FamilyController::class)->except('edit');
+    Route::resource('/user', UserController::class)->except(['story', 'create']);
     Route::resource('/trash', TrashController::class);
     Route::resource('/settings', SettingController::class);
+    Route::get('/my-family-cloud', [FamilyFilesController::class, 'index'])->name('my-family-cloud.index');  
 
-    Route::post('family/addMember', [FamilyController::class, 'addMember'])->name('family.addMember');
+    Route::post('my-family/addMember', [FamilyController::class, 'addMember'])->name('my-family.addMember');
 });
 
 // auth

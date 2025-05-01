@@ -9,7 +9,7 @@
 
 @section('content')
 <h1>Загрузка файла</h1>
-<form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('my-cloud.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="file">Выберите файл для загрузки:</label>
@@ -19,9 +19,9 @@
     <div class="form-group mt-3">
         <label for="visibility">Кто может видеть файл:</label>
         <select name="visibility" id="visibility" class="form-control" required>
-            <option value="all">Все</option>
-            <option value="sub_admin">Зам. админ</option>
-            <option value="owner">Владелец</option>
+            <option value="public">Public</option>
+            <option value="family">Family</option>
+            <option value="private">Private</option>
         </select>
     </div>
 

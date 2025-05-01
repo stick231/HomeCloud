@@ -14,13 +14,13 @@ class AuthController extends Controller
     {
         $response = $authService->register($request);
         
-        return redirect()->route("index");
+        return redirect()->route("my-cloud.index");
     }
 
     public function login(LoginUserRequest $request, AuthService $authService)
     {
         if ($authService->login($request)) {
-            return redirect()->route('index');
+            return redirect()->route('my-cloud.index');
         }
     
         return redirect()->back()->withErrors([
@@ -37,5 +37,10 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
-    
+ 
+    public function logout(Request $request, AuthService $authService)
+    {
+        $authService->logout($request);
+        return redirect()->route('auth.register');
+    }
 }
