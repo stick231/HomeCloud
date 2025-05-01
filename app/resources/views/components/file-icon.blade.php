@@ -1,0 +1,1 @@
+<img src="{{ $pathIcon }}" alt="file icon" width="24" height="24">

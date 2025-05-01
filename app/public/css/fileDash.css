@@ -1,0 +1,89 @@
+.files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: flex-start;
+    align-content: flex-start;
+    width: 100%;
+    max-width: 100%; /* можно поставить 1200px при необходимости */
+    box-sizing: border-box;
+}
+
+.file {
+    flex: 0 0 auto;
+    width: 200px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.file:hover {
+    transform: translateY(-5px);
+}
+
+.file-icon {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.file-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-info {
+    font-size: 13px;
+    color: #555;
+    margin: 2px 0;
+}
+
+.file-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn-download {
+    background-color: #007bff;
+}
+
+.btn-download:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #a71d2a;
+}
+
+.no-files {
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+    margin-top: 40px;
+}

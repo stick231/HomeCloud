@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name'); // Имя файла или папки
             $table->string('path'); // Путь внутри storage
             $table->bigInteger('size')->default(0); // Размер в байтах, для папок можно оставлять 0
-            $table->string('mime_type')->nullable(); // Тип файла (например, image/png, application/pdf)
             $table->boolean('is_folder')->default(false); // Это папка или файл
             $table->foreignId('parent_id')->nullable()->constrained('files')->onDelete('cascade'); 
             $table->enum('visibility', ['private', 'family', 'public'])->default('private');

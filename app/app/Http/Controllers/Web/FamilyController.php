@@ -13,46 +13,52 @@ class FamilyController extends Controller
 {
     public function index(FamilyService $familyService)
     {
+        //последние файлы загруженные пользователями этой семьи
+
         $families = $familyService->getFamily();
-        $users = $familyService->getUsers();
-        return view('family.index', compact('families', 'users'));
+
+        return view('family.index', compact('families'));
     }
     public function create()
     {
+        $this->authorize('family-admin-only', Family::class);
+
         return view('family.create');
     }
     public function store(FamilyCreateRequest $request, FamilyService $familyService)
     {
+        $this->authorize('family-admin-only', Family::class);
+
         $familyService->createFamily($request);
 
-        return redirect()->route('family.index')->with('success', 'Семья успешно добавлена!');
+        return redirect()->route('my-family.index')->with('success', 'Семья успешно добавлена!');
     }
 
     public function show($id)
     {
-        // Здесь будет логика для отображения информации о конкретной семье
-        return view('family.show', compact('id'));
+        $family = Family::findOrFail($id);
+        return view('family.show', compact('family'));
     }
-    public function edit($id)
-    {
-        // Здесь будет логика для редактирования информации о семье
-        return view('family.edit', compact('id'));
-    }
+
     public function update(Request $request, $id)
     {
-        // Здесь будет логика для обновления информации о семье
+        $this->authorize('family-admin-only', Family::class);
+
         return redirect()->route('family.index')->with('success', 'Семья успешно обновлена!');
     }
-    public function destroy($id)
+    public function destroy($id, FamilyService $familyService)
     {
-        // Здесь будет логика для удаления информации о семье
-        return redirect()->route('family.index')->with('success', 'Семья успешно удалена!');
+        $this->authorize('family-admin-only', Family::class);
+
+        $familyService->deleteFamily($id);
+
+        return redirect()->route('my-family.index')->with('success', 'Семья успешно удалена!');
     }
 
     public function addMember(AddMemberRequest $request, FamilyService $familyService)
     {
         $familyService->addMember($request);
 
-        return redirect()->route('family.index')->with('success', 'Пользователь успешно добавлен в семью!');
+        return redirect()->route('my-family.index')->with('success', 'Пользователь успешно добавлен в семью!');
     }
 }
