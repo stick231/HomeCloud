@@ -38,8 +38,8 @@ class CloudService
 
     public function deleteFile($id)
     {
-        // $file = File::findOrFail($id);
-        // Storage::disk('private')->delete($file->path);
-        // $file->delete();
+        $file = File::find($id);
+        Storage::disk('private')->delete($file->path);
+        $file->delete();
     }
 }
