@@ -12,19 +12,27 @@ class AuthController extends Controller
 {
     public function register(RegisterUserRequest $request, AuthService $authService)
     {
-        $response = $authService->register($request);
-        
-        return redirect()->route("my-cloud.index");
+        $result = $authService->register($request);
+
+        if ($result['success']) {
+            return redirect()->route('my-cloud.index');
+        }
+
+        return redirect()->back()->withErrors([
+            'email' => $result['message']
+        ]);
     }
 
     public function login(LoginUserRequest $request, AuthService $authService)
     {
-        if ($authService->login($request)) {
+        $result = $authService->login($request);
+
+        if ($result['success']) {
             return redirect()->route('my-cloud.index');
         }
-    
+
         return redirect()->back()->withErrors([
-            'email' => 'Неверный логин или пароль'
+            'email' => $result['message']
         ]);
     }
 

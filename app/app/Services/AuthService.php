@@ -13,13 +13,18 @@ class AuthService
 {
     public function register(RegisterUserRequest $request)
     {
-        $data = $request->validated(); // name, и тд 
+        $data = $request->validated();
 
         $user = User::create($data);
 
         Storage::disk('private')->makeDirectory('users/' . $user->id);
 
         Auth::login($user);
+
+        return [
+            'success' => true,
+            'message' => 'Registration successful'
+        ];
     }
 
     public function login(LoginUserRequest $request)
@@ -29,13 +34,17 @@ class AuthService
         $user = User::where('email', $data['email'])->first();
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
-            return false;
-            // return response()->json(['message' => 'Invalid credentials'], 401);
+            return [
+                'success' => false,
+                'message' => 'Invalid credentials'
+            ];
         }
 
         Auth::login($user);
-        
-        return true;
+        return [
+            'success' => true,
+            'message' => 'Login successful'
+        ];
     }
 
     public function logout()
