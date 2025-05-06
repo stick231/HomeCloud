@@ -26,9 +26,9 @@
         </main>
     </div>
 
-    <footer>
+    {{-- <footer>
         Footer
-    </footer>
+    {{-- </footer> --}}{{-- ломается страница при перегагрузке (дергается) --}}
 </body>
 </html>
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FileUserRequest;
+use App\Models\File;
 use app\Services\CloudService;
+use Illuminate\Support\Facades\Storage;
 
 class CloudController extends Controller
 {
@@ -44,6 +46,13 @@ class CloudController extends Controller
     {
         $fileService->deleteFile($id);
         return redirect()->route('my-cloud.index')->with('success', 'Файл успешно удален');
+    }
+
+    public function downloadFile($id)
+    {
+        $file = File::findOrFail($id);
+        $filePath = Storage::disk('private')->path($file->path);
+        return response()->download($filePath, $file->name);
     }
     // сделать создание папки которая бы к тому отображалась на экране
 }

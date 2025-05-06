@@ -5,6 +5,7 @@ namespace app\Services;
 use App\Http\Requests\AddMemberRequest;
 use App\Http\Requests\FamilyCreateRequest;
 use App\Models\Family;
+use App\Models\File;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,5 +60,22 @@ class FamilyService
         }
         $family->delete();
         return response()->json(['success' => 'Семья успешно удалена'], 200);
+    }
+
+    public function getFilesFamily()
+    {
+        $user = Auth::user();
+
+        $userFamilyIds = $user->families()->pluck('families.id');
+
+        $userInSameFamily = User::whereHas('families', function($query) use ($userFamilyIds) {
+            $query->whereIn('families.id', $userFamilyIds);
+        })->where('id', '!=', $user->id)->get();
+        
+        $userIds = $userInSameFamily->pluck('id');
+        
+        return File::whereIn('visibility', ['family', 'public'])
+            ->whereIn('user_id', $userIds)
+            ->get();
     }
 }
