@@ -13,6 +13,8 @@ class CloudService
     {
         $user = Auth::user();
         $file = $request->file('file');
+        $visibility = $request->input('visibility');;
+
         Storage::disk('private')->putFileAs('users/' . $user->id, $file, $file->getClientOriginalName());
         
         $filePath = 'users/' . $user->id . '/' . $file->getClientOriginalName();
@@ -24,7 +26,7 @@ class CloudService
             'path' => $filePath,
             'is_folder' => false,
             'size' => $file->getSize(),
-            'visibility' => $request->visibility,
+            'visibility' => $visibility,
         ]);
     }
 
@@ -32,7 +34,7 @@ class CloudService
     {
         $user = Auth::user();
 
-        $files = File::where('user_id', $user->id)->get();
+        $files = $user->files()->where('is_folder', false)->get();
         return $files;
     }
 
@@ -42,4 +44,9 @@ class CloudService
         Storage::disk('private')->delete($file->path);
         $file->delete();
     }
+
+    public function downloadFile($id)
+    {
+    }
+    
 }

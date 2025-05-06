@@ -23,7 +23,7 @@ class FileUserRequest extends FormRequest
     {
         return [
             'file' => 'required|file', // до 10MB
-            'visibility' => 'required|in:public,family,private',
+            'visibility' => 'required|string|in:public,family,private',
         ];
     }
 }

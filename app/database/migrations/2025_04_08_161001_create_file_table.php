@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('size')->default(0); // Размер в байтах, для папок можно оставлять 0
             $table->boolean('is_folder')->default(false); // Это папка или файл
             $table->foreignId('parent_id')->nullable()->constrained('files')->onDelete('cascade'); 
-            $table->enum('visibility', ['private', 'family', 'public'])->default('private');
+            $table->enum('visibility', ['private', 'family', 'public']);
             $table->boolean('virus_checked')->default(false);
             $table->boolean('is_infected')->default(false);
             $table->timestamps();

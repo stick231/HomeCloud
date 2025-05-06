@@ -26,10 +26,10 @@
                 <p class="file-info">Изменён: {{ $file->updated_at->format('Y-m-d H:i') }}</p>
     
                 <div class="file-actions">
-                    {{-- <form action="{{ route('file.download', $file->id) }}" method="POST">
+                    <form action="{{ route('my-cloud-file.download', $file->id) }}" method="POST">
                         @csrf
                         <button class="btn btn-download">Скачать</button>
-                    </form> --}}
+                    </form>
                     <form action="{{ route('my-cloud.destroy', $file->id) }}" method="POST">
                         @csrf
                         @method('DELETE')

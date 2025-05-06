@@ -14,6 +14,7 @@ class File extends Model
         'path',
         'size',
         'type',
+        'visibility',
         'created_at',
         'updated_at'
     ];
