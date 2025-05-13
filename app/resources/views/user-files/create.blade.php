@@ -4,6 +4,7 @@
 @push('head')
     <title>Загрузка файла</title>
     <link rel="stylesheet" href="{{ asset('css/homecloud.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/addFile.css') }}">
 @endpush
 
 

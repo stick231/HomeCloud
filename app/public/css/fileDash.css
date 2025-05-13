@@ -55,6 +55,24 @@
     gap: 10px;
 }
 
+#button-create-file {
+    background: #55c7f5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+#button-create-file:hover {
+    background: #3db3e2;
+}
+
+
 .btn {
     padding: 6px 12px;
     border: none;
@@ -66,11 +84,11 @@
 }
 
 .btn-download {
-    background-color: #007bff;
+    background-color: #55c7f5;
 }
 
 .btn-download:hover {
-    background-color: #0056b3;
+    background-color: #3db3e2;
 }
 
 .btn-delete {
@@ -86,4 +104,34 @@
     font-size: 16px;
     color: #777;
     margin-top: 40px;
+}
+
+/* -------- Мобильная адаптация -------- */
+@media (max-width: 768px) {
+    .files {
+        flex-direction: column; /* Располагаем файлы вертикально */
+        gap: 15px;
+    }
+
+    .file {
+        width: 100%; /* Растягиваем карточки файлов */
+    }
+
+    .file-icon {
+        width: 100px; /* Уменьшаем размер иконки */
+        height: 100px;
+    }
+
+    .file-name {
+        font-size: 14px; /* Уменьшаем размер текста */
+    }
+
+    .file-info {
+        font-size: 12px;
+    }
+
+    .file-actions {
+        flex-direction: column; /* Располагаем кнопки вертикально */
+        gap: 10px;
+    }
 }

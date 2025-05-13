@@ -15,9 +15,6 @@
     @endif
 
     <h1>My Family</h1>
-    @can('admin-only')
-        <a href="{{ route('my-family.create') }}" class="btn btn-primary">Добавить семью</a>
-    @endcan
     @if($families ->isEmpty())
         <p>Семей нет</p>
     @else
@@ -30,20 +27,34 @@
                     <div class="members">
                         <div>Members: {{ $family->users->count() }}</div>
                     </div>
+                </div>
+                <div class="family-info">
                     <div class="files">
-                        {{-- <div>Files: {{ $family->files->count() }}</div> вывод колво файлов семьи--}}
+                        <div>Count family files:    </div>
                     </div>
                 </div>
-                <div>
+                <div class="family-info">
+                    <div class="family-user-info">
+                       <div>Your role in family: {{ $family->users()->where('users.id', $user->id)->first()->role ?? 'Unknown' }}</div>
+                    </div>
                 </div>
                 <div class="recent-files">
                     <h3>Недавние файлы:</h3>
                     <p></p>
                     <p></p>
                 </div>
-                <a href="{{ route('my-family.show', $family->id) }}">Manage</a> 
+                <div class="action-form">
+                    <h3>Action</h3>
+                    <form action="{{ route('my-family.edit', $family->id) }}" method="get">
+                    <button class="family-action">Edit</button>
+                </form>
+                <a class='family-action' href="{{ route('my-family.show', $family->id) }}">Show</a>
+                </div>
             </div>
         @endforeach
     @endif
+    @can('admin-only')
+        <a href="{{ route('my-family.create') }}" class="family-action create">Add Family</a>
+    @endcan
 
 @endsection

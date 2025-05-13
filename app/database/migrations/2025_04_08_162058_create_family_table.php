@@ -11,11 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('families', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
-        });
+     Schema::create('families', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->text('description')->nullable();
+        $table->unsignedBigInteger('owner_id'); // если хочешь хранить владельца
+        $table->string('photo')->nullable();
+        $table->timestamps();
+
+        $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+    });
     }
     
 

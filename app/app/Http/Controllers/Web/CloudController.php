@@ -14,12 +14,12 @@ class CloudController extends Controller
     public function index(CloudService $fileService)
     {
         $files = $fileService->getFilesUsers();
-        return view('userFile.home')->with('files', $files);
+        return view('user-files.home')->with('files', $files);
     }
 
     public function create()
     {
-        return view('userFile.create'); 
+        return view('user-files.create'); 
     }
     public function store(FileUserRequest $request, CloudService $fileService)
     {

@@ -1,0 +1,72 @@
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #55c7f5;
+    margin-bottom: 20px;
+}
+
+form {
+    background: white;
+    padding: 30px; /* Увеличен внутренний отступ */
+    border-radius: 20px; /* Более мягкие углы */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Более заметная тень */
+    max-width: 900px; /* Увеличена ширина */
+    margin: 0; /* Убираем центрирование */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="file"],
+select {
+    width: 100%;
+    padding: 12px; /* Увеличен отступ внутри полей */
+    font-size: 16px; /* Увеличен размер шрифта */
+    border: 1px solid #bbb; /* Более мягкий цвет границы */
+    border-radius: 10px; /* Более мягкие углы */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+}
+
+button {
+    background: #55c7f5;
+    color: white;
+    padding: 12px 24px; /* Увеличен размер кнопки */
+    border: none;
+    border-radius: 12px; /* Более мягкие углы */
+    font-size: 16px; /* Увеличен размер шрифта */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background: #3db3e2;
+}
+
+/* -------- Мобильная адаптация -------- */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        max-width: 100%; /* Растягиваем форму */
+    }
+
+    input[type="file"],
+    select {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%; /* Кнопка занимает всю ширину */
+    }
+}
