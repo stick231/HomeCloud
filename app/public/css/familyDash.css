@@ -1,11 +1,13 @@
 .family-dashboard {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 500px;
 }
 
 .family-header {
@@ -14,11 +16,13 @@
     align-items: center;
     font-size: 18px;
     font-weight: 600;
+    color: #333;
 }
 
 .family-header .family-name {
     font-size: 24px;
     font-weight: bold;
+    color: #55c7f5;
 }
 
 .family-header .search-bar {
@@ -40,6 +44,12 @@
     align-items: center;
     gap: 20px;
     font-size: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.family-info:last-child {
+    border-bottom: none;
 }
 
 .family-info .members,
@@ -50,13 +60,14 @@
 }
 
 .family-info .action-btn {
-    padding: 8px 12px;
+    padding: 10px 20px;
     background: #55c7f5;
     color: white;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 10px;
     font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
     transition: background 0.3s;
 }
 
@@ -64,34 +75,109 @@
     background: #3db3e2;
 }
 
-.recent-files,
-.family-events {
+.recent-files {
     margin-top: 20px;
 }
 
-.recent-files ul,
-.family-events ul {
+.recent-files h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.recent-files ul {
     list-style: none;
     padding: 0;
 }
 
-.recent-files li,
-.family-events li {
+.recent-files li {
     margin-bottom: 10px;
     font-size: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #333;
 }
 
-.recent-files li span,
+.recent-files li span {
+    font-weight: bold;
+    color: #55c7f5;
+}
+
+.family-events {
+    margin-top: 20px;
+}
+
+.family-events ul {
+    list-style: none;
+    padding: 0;
+}
+
+.family-events li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
 .family-events li span {
     font-weight: bold;
 }
 
-.family-events li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
+.family-action{
+    background: #55c7f5;
+    color: white;
+    padding: 12px 24px; /* Увеличен размер кнопки */
+    border: none;
+    border-radius: 12px; /* Более мягкие углы */
+    font-size: 16px; /* Увеличен размер шрифта */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+    width: 400px;
+    text-align: left;
+    margin: 10px 0;
+}
+
+.family-action:hover .button-family-action{
+    background: #3db3e2;
+}
+
+
+.create {
+    margin: 20px 0px;
+}
+
+/* -------- Мобильная адаптация -------- */
+@media (max-width: 768px) {
+    .family-dashboard {
+        padding: 15px;
+        min-width: 100%; /* Растягиваем блок */
+    }
+
+    .family-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .family-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .recent-files h3 {
+        font-size: 16px;
+    }
+
+    .recent-files li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
 }

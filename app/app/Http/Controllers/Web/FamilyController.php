@@ -8,6 +8,7 @@ use App\Http\Requests\FamilyCreateRequest;
 use App\Models\Family;
 use app\Services\FamilyService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FamilyController extends Controller
 {
@@ -16,8 +17,9 @@ class FamilyController extends Controller
         //последние файлы загруженные пользователями этой семьи
 
         $families = $familyService->getFamily();
+        $user = Auth::user();
 
-        return view('family.index', compact('families'));
+        return view('family.index', compact('families', 'user'));
     }
     public function create()
     {
@@ -34,17 +36,22 @@ class FamilyController extends Controller
         return redirect()->route('my-family.index')->with('success', 'Семья успешно добавлена!');
     }
 
-    public function show($id)
+    public function edit($id)
     {
         $family = Family::findOrFail($id);
-        return view('family.show', compact('family'));
+        return view('family.edit', compact('family'));
+    }
+
+    public function show($id)
+    {
     }
 
     public function update(Request $request, $id)
     {
+        dd($request);
         $this->authorize('family-admin-only', Family::class);
 
-        return redirect()->route('family.index')->with('success', 'Семья успешно обновлена!');
+        return redirect()->route('my-family.index')->with('success', 'Семья успешно обновлена!');
     }
     public function destroy($id, FamilyService $familyService)
     {

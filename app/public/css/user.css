@@ -1,0 +1,76 @@
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #55c7f5;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+strong {
+    color: #55c7f5;
+}
+
+.account-info {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    min-width: 700px;
+    max-width: 800px;
+}
+
+.account-info p {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.account-info p:last-child {
+    border-bottom: none;
+}
+
+button {
+    background: #55c7f5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #3db3e2;
+}
+
+/* -------- Мобильная адаптация -------- */
+@media (max-width: 768px) {
+    .account-info {
+        width: 100%; /* Растягиваем блок */
+        padding: 15px;
+    }
+
+    p {
+        font-size: 14px; /* Уменьшаем размер текста */
+    }
+
+    button {
+        width: 100%; /* Кнопка занимает всю ширину */
+    }
+}

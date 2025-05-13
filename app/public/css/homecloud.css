@@ -97,14 +97,32 @@ footer {
 
 /* -------- Мобильная адаптация -------- */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 80px; /* Уменьшаем размер логотипа */
+    }
+
+    .search-bar input {
+        width: 100%; /* Растягиваем поле поиска */
+    }
+
     .container {
         flex-direction: column;
         padding: 10px;
     }
 
     aside {
-        flex-direction: row;
         width: 100%;
+        flex-direction: row;
         justify-content: space-around;
         padding: 10px;
     }
@@ -114,27 +132,7 @@ footer {
         padding: 10px;
     }
 
-    .files {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 12px;
-    }
-
-    .file-card {
-        padding: 12px;
-    }
-
-    header, footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .logo {
-        font-size: 18px;
-        padding: 8px 14px;
-    }
-
-    .search-bar input {
-        width: 90%;
+    footer {
+        font-size: 14px;
     }
 }

@@ -7,7 +7,6 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ $family->name }}</h1>
-        
-    </div>
+    {{-- return accounts member  --}}
+    {{-- create accounts page user --}}
 @endsection

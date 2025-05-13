@@ -21,9 +21,9 @@
             <div class="file">
                 <x-file-icon :filename="$file->name" class="file-icon" />
                 <h2 class="file-name">{{ $file->name }}</h2>
-                <p class="file-info">Размер: {{ number_format($file->size / 1024, 2) }} КБ</p>
+                <x-file-size :fileSize="$file->size" :checkBlock="false" />
                 <p class="file-info">Создан: {{ $file->created_at->format('Y-m-d H:i') }}</p>
-                <p class="file-info">Изменён: {{ $file->updated_at->format('Y-m-d H:i') }}</p>
+                <p class="file-info">Изменён: {{ $file->updated_at->format('Y-m-d H:i') }}</p>{{-- fix or delete --}}
     
                 <div class="file-actions">
                     <form action="{{ route('my-cloud-file.download', $file->id) }}" method="POST">
@@ -44,6 +44,6 @@
         @endif
     </section>
 
-    {{-- Загрузка папки --}}
-    <a href="{{route('my-cloud.create')}}">Перенести файл</a>
+    {{-- сделать загрузку папки --}}
+    <a id='button-create-file' href="{{route('my-cloud.create')}}">Перенести файл</a>
 @endsection

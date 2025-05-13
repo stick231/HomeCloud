@@ -1,0 +1,1 @@
+<p class="file-info">Размер: {{ $formattedFileSize }}</p>
