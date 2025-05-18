@@ -6,21 +6,19 @@
 @endpush
 
 @section('content')
-    {{-- <div class="container"> --}}
-        <h1>{{ $family->name }}</h1>
+        <h1>Edit Family: {{ $family->name }}</h1>
         <form action="{{ route('my-family.update', $family->id) }}" method="post">
             @method('PUT')
             @csrf
             <input type="text" name="name" id="family-name" value="{{ $family->name }}">
-            <input type="text" name='description' id="family-description" value="{{-- $family->description --}}"> 
+            <input type="text" name='description' id="family-description" title="description" value="{{-- $family->description --}}"> 
             <input type="file" name="photo" id="family-photo">
-            @foreach ($family->users as $user)
-                <label for="">
-                    <input type="checkbox" name="member[]" value="{{ $user->id }}">{{-- добавить пользователей только тех кого нет --}}
-                    {{ $user->name }}
-                </label>
-            @endforeach
-                <button>test</button>
         </form>
-    {{-- </div> --}}
+        <form action="{{ route('my-family.addMember') }}" method="post">
+            @csrf
+            
+        </form>
+        <div class="action add-member">
+                <h2>Add member</h2>
+        </div>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddMemberRequest;
 use App\Http\Requests\FamilyCreateRequest;
 use App\Models\Family;
+use App\Models\FamilyUser;
 use app\Services\FamilyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,8 @@ class FamilyController extends Controller
 
     public function show($id)
     {
+        $family = Family::findOrFail($id);
+        return view('family.show', compact('family'));
     }
 
     public function update(Request $request, $id)

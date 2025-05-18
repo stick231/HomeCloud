@@ -15,7 +15,7 @@ return new class extends Migration
         $table->id();
         $table->string('name');
         $table->text('description')->nullable();
-        $table->unsignedBigInteger('owner_id'); // если хочешь хранить владельца
+        $table->unsignedBigInteger('owner_id');
         $table->string('photo')->nullable();
         $table->timestamps();
 
