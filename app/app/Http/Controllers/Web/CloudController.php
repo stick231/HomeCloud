@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FileUserRequest;
 use App\Models\File;
-use app\Services\CloudService;
+use App\Services\CloudService;
 use Illuminate\Support\Facades\Storage;
 
 class CloudController extends Controller
