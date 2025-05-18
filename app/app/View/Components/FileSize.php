@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class fileSize extends Component
+class FileSize extends Component
 {
     public $fileSize;
     public $checkBlock;
