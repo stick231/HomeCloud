@@ -30,8 +30,12 @@ class FamilyService
     }
 
     public function createFamily(FamilyCreateRequest $request)
-    {
-        return Family::create($request->validated());
+    {   
+        $data = $request->validated();
+        $data['owner_id'] = Auth::id();
+        
+        // dd($data);
+        return Family::create($data);
     }
 
     public function addMember(AddMemberRequest $request)

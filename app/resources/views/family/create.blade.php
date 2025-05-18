@@ -13,6 +13,8 @@
         <div class="form-group">
             <label for="name">Family Name</label>
             <input type="text" name="name" id="name" class="form-control" required>
+            <input type="text" name="description" id="description" class="form-control" placeholder="Description (optional)">
+            {{-- input file photo in future --}}
         </div>
         <button type="submit" class="btn btn-primary">Create Family</button>
         <a href="{{ route('my-family.index') }}" class="btn btn-secondary">Cancel</a>

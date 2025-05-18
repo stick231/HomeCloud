@@ -18,6 +18,7 @@
     @if($families ->isEmpty())
         <p>Семей нет</p>
     @else
+        <div class="families-container">
         @foreach($families as $family)
             <div class="family-dashboard">
                 <div class="family-header">
@@ -52,6 +53,8 @@
                 </div>
             </div>
         @endforeach
+        </div>
+        
     @endif
     @can('admin-only')
         <a href="{{ route('my-family.create') }}" class="family-action create">Add Family</a>
