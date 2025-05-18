@@ -14,7 +14,7 @@ class CloudController extends Controller
     public function index(CloudService $fileService)
     {
         $files = $fileService->getFilesUsers();
-        return view('user-files.home')->with('files', $files);
+        return view('user-files.index')->with('files', $files);
     }
 
     public function create()
