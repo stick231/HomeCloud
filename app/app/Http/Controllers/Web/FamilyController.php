@@ -7,7 +7,7 @@ use App\Http\Requests\AddMemberRequest;
 use App\Http\Requests\FamilyCreateRequest;
 use App\Models\Family;
 use App\Models\FamilyUser;
-use app\Services\FamilyService;
+use App\Services\FamilyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
