@@ -25,7 +25,7 @@ class FamilyController extends Controller
     public function create()
     {
         $this->authorize('family-admin-only', Family::class);
-
+        // redirect to page with form edit family (add member)
         return view('family.create');
     }
     public function store(FamilyCreateRequest $request, FamilyService $familyService)

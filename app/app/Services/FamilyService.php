@@ -33,9 +33,12 @@ class FamilyService
     {   
         $data = $request->validated();
         $data['owner_id'] = Auth::id();
-        
-        // dd($data);
-        return Family::create($data);
+
+        $family = Family::create($data);
+        // add exception
+        $family->users()->attach($data['owner_id']);
+
+        return response()->json(['success' => 'Family successfully created']);
     }
 
     public function addMember(AddMemberRequest $request)

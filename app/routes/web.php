@@ -15,7 +15,7 @@ Route::middleware(RedirectIfNotAuthenticated::class)->group(function () {
     Route::get('/', [CloudController::class, 'index']); // домашняя страница
     Route::resource('my-cloud', CloudController::class);
     Route::resource('my-family', FamilyController::class);
-    Route::resource('/user', UserController::class)->except(['story', 'create']);
+    Route::resource('/user', UserController::class)->except(['story', 'create']); // переделать, чтобы данные выводились при запросе {{ user->name }} чтобы не было вопросов
     Route::resource('/trash', TrashController::class);
     Route::resource('/settings', SettingController::class);
 
