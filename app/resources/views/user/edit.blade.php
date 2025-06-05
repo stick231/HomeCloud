@@ -21,11 +21,11 @@
         </label>
         <label for="">
             Edit password
-            <input type="text" class="" name="password">
+            <input type="password" class="" name="password">
         </label>
         <label for="">
             Confirm password
-            <input type="text" class="" name="password">
+            <input type="password" class="" name="password">
         </label>
     </form>
     {{-- return input with value user  --}}

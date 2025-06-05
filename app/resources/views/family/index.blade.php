@@ -44,11 +44,14 @@
                     <p></p>
                     <p></p>
                 </div>
+    
                 <div class="action-form">
                     <h3>Action</h3>
+                    @can('family-admin-only', $family->id)
                     <form action="{{ route('my-family.edit', $family->id) }}" method="get">
-                    <button class="family-action">Edit</button>
-                </form>
+                        <button class="family-action">Edit</button>
+                    </form>
+                    @endcan
                 <a class='family-action' href="{{ route('my-family.show', $family->id) }}">Show</a>
                 </div>
             </div>
