@@ -54,6 +54,5 @@ class CloudController extends Controller
         $filePath = Storage::disk('private')->path($file->path);
         return response()->download($filePath, $file->name);
     }
-    // сделать создание папки которая бы к тому отображалась на экране
 }
 
