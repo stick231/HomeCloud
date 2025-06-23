@@ -22,7 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'photo'
     ];
 
     /**
@@ -57,5 +58,10 @@ class User extends Authenticatable
     public function files(): HasMany
     {
         return $this->hasMany(File::class, 'user_id');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
     }
 }

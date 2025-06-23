@@ -7,10 +7,11 @@
 
 @section('content')
     <h1>Family: {{ $family->name }}</h1>
-    <div class="member-family">
+    <div class="bl-family-member">
         <h2>Family member</h2>
-        <div>
+        <div class="family-member">
         @foreach ($family->users as $user)
+            
             <div>Username: {{ $user->name }}</div>
             <div>Role in family: </div>
         @endforeach

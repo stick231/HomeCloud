@@ -9,13 +9,25 @@ use App\Http\Controllers\Web\AuthController;
 use App\Http\Middleware\RedirectIfNotAuthenticated;
 use App\Http\Controllers\Web\CloudController;
 use App\Http\Controllers\Web\FamilyFilesController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 // home page //prefix('/cloud')
 Route::middleware(RedirectIfNotAuthenticated::class)->group(function () {
     Route::get('/', [CloudController::class, 'index']); // домашняя страница
-    Route::resource('my-cloud', CloudController::class);
+    Route::resource('my-cloud', CloudController::class); // change route {{ $file->name }}
     Route::resource('my-family', FamilyController::class);
-    Route::resource('/user', UserController::class)->except(['story', 'create']); // переделать, чтобы данные выводились при запросе {{ user->name }} чтобы не было вопросов
+
+    Route::prefix('/u')->group(function(){
+        Route::get('{user}', function (User $user) {
+            $profileUser = $user ?? Auth::user();
+
+            return view('user.index', [
+                'user' => Auth::user(),
+                'profileUser' => $profileUser,
+            ]);
+        })->name('user.index');
+    });
     Route::resource('/trash', TrashController::class);
     Route::resource('/settings', SettingController::class);
 

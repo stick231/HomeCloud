@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,5 +25,9 @@ class AppServiceProvider extends ServiceProvider
         Route::middleware('api')
         ->prefix('api')
         ->group(base_path('routes/api.php'));
+
+        View::composer('layouts.home', function ($view) {
+            $view->with('user', Auth::user());
+        });
     }
 }

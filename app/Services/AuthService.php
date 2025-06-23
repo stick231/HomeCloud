@@ -14,11 +14,9 @@ class AuthService
     public function register(RegisterUserRequest $request)
     {
         $data = $request->validated();
-
         $user = User::create($data);
 
-        Storage::disk('private')->makeDirectory('users/' . $user->id);
-
+        Storage::disk('private')->makeDirectory('users/' . $user->id . '/files');
         Auth::login($user);
 
         return [

@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_telegram_id')->unique()->nullable(); // Telegram ID
-            $table->string('name');
+            $table->string('name')->unique();
             $table->enum('role', ['admin', 'sub_admin', 'user'])->default('user');
             $table->string('email')->unique();
+            $table->string('photo');
             $table->string('password');
             $table->bigInteger('max_storage_size')->default(10 * 1024 * 1024 * 1024); // 10 GB default
             $table->boolean('is_telegram_user')->default(false);

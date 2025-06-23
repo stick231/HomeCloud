@@ -13,7 +13,7 @@
 
     <div class="container">
         <aside>        
-            <a href="{{ route('user.index') }}"><div class="menu account-btn">My account</div></a>
+            <a href="{{ route('user.index', $user) }}"><div class="menu account-btn">My account</div></a>
             <a href="{{ route('my-family.index') }}"><div class="menu family-btn">Family</div></a>
             <a href="{{ route('my-cloud.index') }}"><div class="menu user-files-btn">My files</div></a>
             <a href="{{ route('my-family-cloud.index') }}"><div class="menu family-files-btn">Family files</div></a>{{-- добавить имя семьи или если нету убрать кнопку  --}}
@@ -28,7 +28,7 @@
 
     {{-- <footer>
         Footer
-    {{-- </footer> --}}{{-- ломается страница при перегагрузке (дергается) --}}
+    </footer> --}}
 </body>
 </html>
 
