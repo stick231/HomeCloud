@@ -5,13 +5,13 @@ h1 {
     margin-bottom: 20px;
 }
 
-form {
+.file-form {
     background: white;
-    padding: 30px; /* Увеличен внутренний отступ */
-    border-radius: 20px; /* Более мягкие углы */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Более заметная тень */
-    max-width: 900px; /* Увеличена ширина */
-    margin: 0; /* Убираем центрирование */
+    padding: 30px; 
+    border-radius: 20px; 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    max-width: 900px; 
+    margin: 0;
 }
 
 .form-group {

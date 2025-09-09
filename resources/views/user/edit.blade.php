@@ -11,23 +11,38 @@
     <form action="{{ route('user.update', $user->id) }}" method="post">
         @csrf
         @method('PUT')
-        <label for="">
+        <label>
             Edit Username
-            <input type="text" class="" name="name" value="{{ $user->name }}">
+            <input type="text" name="name" value="{{ $user->name }}">
         </label>
-        <label for="">
+        <label>
             Edit Email
-            <input type="email" class="" name="email" value="{{ $user->email }}">
+            <input type="email" name="email" value="{{ $user->email }}">
         </label>
-        <label for="">
-            Edit password
-            <input type="password" class="" name="password">
+        <!-- Добавьте это поле -->
+        <label>
+            Current Password
+            <input type="password" name="current_password">
         </label>
-        <label for="">
-            Confirm password
-            <input type="password" class="" name="password">
+        <label>
+            New Password
+            <input type="password" name="password">
         </label>
+        <label>
+            Confirm New Password
+            <input type="password" name="password_confirmation">
+        </label>
+        <input type="submit" value="Confirm">
     </form>
+    @if ($errors->any())
+    <div class="errors">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     {{-- return input with value user  --}}
     {{-- name --}}
     {{-- email --}}

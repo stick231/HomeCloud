@@ -7,7 +7,9 @@
     <header>
         <div class="logo-div"><img class="logo" src="{{ asset('img/logo.png') }}" alt="Логотип"></div>
         <div class="search-bar">
-            <input type="text" placeholder="Search file or user">
+            <form action="" method="get">
+                <input type="text" placeholder="Search file or user"> {{-- create form and button --}}
+            </form>
         </div>
     </header>
 

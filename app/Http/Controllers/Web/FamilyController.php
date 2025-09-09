@@ -39,8 +39,9 @@ class FamilyController extends Controller
 
     public function edit($id)
     {
-        $family = Family::findOrFail($id);
-        return view('family.edit', compact('family'));
+        $family = Family::findOrFail($id); // add user data
+        $familyUser = FamilyUser::where('family_id', $family->id)->get();
+        return view('family.edit', compact('family', 'familyUser'));
     }
 
     public function show($id)
@@ -68,7 +69,7 @@ class FamilyController extends Controller
     public function addMember(AddMemberRequest $request, FamilyService $familyService)
     {
         $familyService->addMember($request);
-
+        
         return redirect()->route('my-family.index')->with('success', 'Пользователь успешно добавлен в семью!');
     }
 }

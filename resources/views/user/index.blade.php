@@ -28,16 +28,14 @@
             <p><strong>Created At:</strong> <span>{{ $user->created_at }}</span></p>
         </div>
 
-        {{-- <form action="{{ route('user.edit', $user->id) }}" method="get"> --}}
+        <form action="{{ route('user.edit', $user->id) }}" method="get">
             <button type="submit">Edit Profile</button>
-        {{-- </form> --}}
+        </form>
     @else
-        {{-- 🔵 Публичный профиль другого пользователя --}}
         <h1>{{ $profileUser->name }}'s Public Profile</h1>
-
         <div class="public-profile">
             <p><strong>Joined:</strong> {{ $profileUser->created_at->format('F j, Y') }}</p>
-            {{-- Добавь то, что хочешь показывать остальным --}}
         </div>
+        {{-- create description --}}
     @endif
 @endsection

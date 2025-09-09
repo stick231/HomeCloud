@@ -13,12 +13,12 @@
             <input type="text" name="name" id="family-name" value="{{ $family->name }}">
             <input type="text" name='description' id="family-description" title="description" value="{{-- $family->description --}}"> 
             <input type="file" name="photo" id="family-photo">
-        </form>
-        <form action="{{ route('my-family.addMember') }}" method="post">
-            @csrf
-            
+            <input type="submit" value="Change">
         </form>
         <div class="action add-member">
-                <h2>Add member</h2>
+            <h2>Add member</h2>
+            <form action="{{ route('my-family.addMember') }}" method="post">
+                    @csrf
+            </form>
         </div>
 @endsection

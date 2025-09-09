@@ -60,7 +60,7 @@
         
     @endif
     @can('admin-only')
-        <a href="{{ route('my-family.create') }}" class="family-action create">Add Family</a>
+        <a href="{{ route('my-family.create') }}" class="family-action create">Create Family</a>
     @endcan
 
 @endsection

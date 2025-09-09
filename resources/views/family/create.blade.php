@@ -14,6 +14,7 @@
             <label for="name">Family Name</label>
             <input type="text" name="name" id="name" class="form-control" required>
             <input type="text" name="description" id="description" class="form-control" placeholder="Description (optional)">
+            <input type="file" name="photo" id="family-photo">
             {{-- input file photo in future --}}
         </div>
         <button type="submit" class="btn btn-primary">Create Family</button>
