@@ -11,9 +11,7 @@
         <h2>Family member</h2>
         <div class="family-member">
         @foreach ($family->users as $user)
-            
-            <div>Username: {{ $user->name }}</div>
-            <div>Role in family: </div>
+            <a href={{ route('user.index', $user->name) }}>{{ $user->name }}</a> (роль: {{ $user->pivot->role }})
         @endforeach
         </div>
     </div>

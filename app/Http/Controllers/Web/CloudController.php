@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FileUserRequest;
 use App\Models\File;
 use App\Services\CloudService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class CloudController extends Controller
@@ -19,7 +20,9 @@ class CloudController extends Controller
 
     public function create()
     {
-        return view('user-files.create'); 
+        $user = Auth::user();
+        $families = $user->families;
+        return view('user-files.create', compact('families')); 
     }
     public function store(FileUserRequest $request, CloudService $fileService)
     {

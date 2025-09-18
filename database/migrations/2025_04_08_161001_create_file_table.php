@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('is_folder')->default(false); // Это папка или файл
             $table->foreignId('parent_id')->nullable()->constrained('files')->onDelete('cascade'); 
             $table->enum('visibility', ['private', 'family', 'public']);
+            $table->json('family_ids')->nullable();
             $table->boolean('virus_checked')->default(false);
             $table->boolean('is_infected')->default(false);
             $table->timestamps();

@@ -22,9 +22,9 @@ class AddMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'family_id' => 'required|exists:families,id',
-            'user_id' => 'required|exists:users,id',
-            'role' => 'required|string|max:255',
+            // 'family_id' => 'required|exists:families,id',
+            // 'user_id' => 'required|exists:users,id',
+            // 'role' => 'required|string|max:255',
         ];
     }
 }

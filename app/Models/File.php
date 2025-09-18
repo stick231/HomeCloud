@@ -15,8 +15,13 @@ class File extends Model
         'size',
         'type',
         'visibility',
+        'family_ids',
         'created_at',
         'updated_at'
+    ];
+    
+    protected $casts = [
+        'family_ids' => 'array',
     ];
 
     public function user()

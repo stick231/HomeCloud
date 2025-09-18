@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FileUserRequest extends FormRequest
+class UpdateFamilyDataRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,9 @@ class FileUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|file', // до 10MB
-            'visibility' => 'required|string|in:public,family,private',
-            'families' => 'required_if:visibility,family'
+            'name' => 'required|string|max:255|unique:users,name',
+            'description' => 'nullable|string|max:1000',
+            'photo' => 'nullable',
         ];
     }
 }

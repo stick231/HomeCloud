@@ -27,6 +27,7 @@ class CloudService
             'is_folder' => false,
             'size' => $file->getSize(),
             'visibility' => $visibility,
+            'family_ids' => json_encode($request->input('families')),
         ]);
     }
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->enum('role', ['admin', 'sub_admin', 'user'])->default('user');
             $table->string('email')->unique();
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('password');
             $table->bigInteger('max_storage_size')->default(10 * 1024 * 1024 * 1024); // 10 GB default
             $table->boolean('is_telegram_user')->default(false);

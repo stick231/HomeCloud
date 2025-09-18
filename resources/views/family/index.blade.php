@@ -52,7 +52,14 @@
                         <button class="family-action">Edit</button>
                     </form>
                     @endcan
-                <a class='family-action' href="{{ route('my-family.show', $family->id) }}">Show</a>
+                    <a class='family-action' href="{{ route('my-family.show', $family->id) }}">Show</a>
+                    @can('family-admin-only', $family->id)
+                    <form action="{{ route('my-family.destroy', $family->id) }}" method="post">
+                        @csrf
+                        @method('Delete')
+                        <button class="family-action del">Delete</button>
+                    </form>
+                    @endcan
                 </div>
             </div>
         @endforeach

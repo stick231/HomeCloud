@@ -153,13 +153,21 @@
     margin: 10px 0;
 }
 
+.del {
+    background-color: #dc3545;
+}
+
+.del:hover {
+    background-color: #a71d2a;
+}
+
 .family-action:hover .button-family-action{
     background: #3db3e2;
 }
 
 
 .create {
-    margin: 20px 0px;
+    margin: 40px 0px 20px 20px;
 }
 
 @media (max-width: 768px) {

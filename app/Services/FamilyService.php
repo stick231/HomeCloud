@@ -5,6 +5,7 @@ namespace app\Services;
 use App\Http\Requests\AddMemberRequest;
 use App\Http\Requests\FamilyCreateRequest;
 use App\Models\Family;
+use App\Models\FamilyUser;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -41,22 +42,15 @@ class FamilyService
         return response()->json(['success' => 'Family successfully created']);
     }
 
-    public function addMember(AddMemberRequest $request)
+    public function addMember(AddMemberRequest $request, $id)
     {
-        $validated = $request->validated();
-
-        $family = Family::find($validated['family_id']);
-        if (!$family) {
-            return response()->json(['error' => 'Семья не найдена'], 404);
-        }
-        $user = User::find($validated['user_id']);
-        if (!$user) {
-            return response()->json(['error' => 'Пользователь не найден'], 404);
-        }
-        if ($family->users()->where('user_id', $user->id)->exists()) {
-            return response()->json(['error' => 'Пользователь уже в семье'], 400);
-        }
-        $family->users()->attach($user->id);
+        $family = Family::findOrFail($id);
+        $userIds = $request->input('user_ids', []);
+        
+        $family->users()->syncWithPivotValues(
+            $userIds, 
+            ['family_id' => $id, 'role' => 'user']
+        );
     }
 
     public function deleteFamily($id)
@@ -65,7 +59,7 @@ class FamilyService
         if(!$family){
             return response()->json(['error' => 'Семья не найдена'], 404); 
         }
-        $family->delete();
+        $family->forceDelete();
         return response()->json(['success' => 'Семья успешно удалена'], 200);
     }
 
