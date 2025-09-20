@@ -22,9 +22,9 @@ class UserController extends Controller
         return view('user.index')->with('user', $user);
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
         return view('user.edit')->with('user', $user);
     }
 

@@ -28,7 +28,7 @@
             <p><strong>Created At:</strong> <span>{{ $user->created_at }}</span></p>
         </div>
 
-        <form action="{{ route('user.edit', $user->id) }}" method="get">
+        <form action="{{ route('user.edit') }}" method="get">
             <button type="submit">Edit Profile</button>
         </form>
     @else

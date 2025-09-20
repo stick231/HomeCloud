@@ -29,7 +29,7 @@ Route::middleware(RedirectIfNotAuthenticated::class)->group(function () {
         })->name('user.index');
     });
 
-    Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/edit-profile', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/update-user-data', [UserController::class, 'update'])->name('user.update');
 
     Route::resource('/trash', TrashController::class);

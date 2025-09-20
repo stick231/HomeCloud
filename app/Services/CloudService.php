@@ -27,8 +27,12 @@ class CloudService
             'is_folder' => false,
             'size' => $file->getSize(),
             'visibility' => $visibility,
-            'family_ids' => json_encode($request->input('families')),
+            'family_ids' => $request->input('families'),
         ]);
+    }
+
+    public function uploadSettingsUserFile(){
+
     }
 
     public function getFilesUsers()

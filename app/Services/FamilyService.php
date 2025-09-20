@@ -66,17 +66,16 @@ class FamilyService
     public function getFilesFamily()
     {
         $user = Auth::user();
+        $families = $user->families;
 
-        $userFamilyIds = $user->families()->pluck('families.id');
-
-        $userInSameFamily = User::whereHas('families', function($query) use ($userFamilyIds) {
-            $query->whereIn('families.id', $userFamilyIds);
-        })->where('id', '!=', $user->id)->get();
-        
-        $userIds = $userInSameFamily->pluck('id');
-        
-        return File::whereIn('visibility', ['family', 'public'])
-            ->whereIn('user_id', $userIds)
-            ->get();
+        $filesWithFamily = $families->map(function($family) {
+            $files = File::where('visibility', 'family')
+                ->whereJsonContains('family_ids', (string)$family->id)
+                ->with('user')
+                ->get();
+            $family->setRelation('files', $files);
+            return $family;
+        });
+        return $filesWithFamily;
     }
 }
