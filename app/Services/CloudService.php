@@ -14,11 +14,10 @@ class CloudService
         $user = Auth::user();
         $file = $request->file('file');
         $visibility = $request->input('visibility');;
-
-        Storage::disk('private')->putFileAs('users/' . $user->id . "/files", $file, $file->getClientOriginalName());
         
-        $filePath = 'users/' . $user->id . '/' . $file->getClientOriginalName();
-        Storage::disk('private')->putFileAs('users/' . $user->id . '/files', $file, $file->getClientOriginalName());
+        $downloadPath = 'users/' . $user->id . '/'. 'files/';
+        Storage::disk('private')->putFileAs($downloadPath, $file, $file->getClientOriginalName());
+        $filePath = 'users/' . $user->id . '/'. 'files/' . $file->getClientOriginalName();
 
         File::create([
             'user_id' => $user->id,

@@ -68,8 +68,9 @@ class FamilyService
         $user = Auth::user();
         $families = $user->families;
 
-        $filesWithFamily = $families->map(function($family) {
+        $filesWithFamily = $families->map(function($family) use($user) {
             $files = File::where('visibility', 'family')
+                ->where('user_id', '!=', $user->id)
                 ->whereJsonContains('family_ids', (string)$family->id)
                 ->with('user')
                 ->get();
