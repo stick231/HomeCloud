@@ -1,32 +1,36 @@
 @extends('layouts.home')
 
-
 @push('head')
-    <title>Загрузка файла</title>
+    <title>Загрузка файлов</title>
     <link rel="stylesheet" href="{{ asset('css/homecloud.css') }}">
     <link rel="stylesheet" href="{{ asset('css/addFile.css') }}">
 @endpush
 
 @section('content')
-<h1>Загрузка файла</h1>
-<form class="file-form" action="{{ route('my-cloud.store') }}" method="POST" enctype="multipart/form-data">
+<h1>Загрузка файлов и папок</h1>
+
+<form id="upload-form" class="file-form" action="{{ route('my-cloud.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="form-group">
-        <label for="file">Выберите файл для загрузки:</label>
-        <input type="file" name="file" id="file" class="form-control" required>
+
+    {{-- Кастомная drag & drop зона --}}
+    <div id="drop-area" style="border:2px dashed #007bff; padding:20px; text-align:center;">
+        <p>Перетащите файлы сюда или нажмите кнопку</p>
+        <button id="browse-btn" type="button">Выбрать файлы</button>
+        <input type="file" id="file-input" multiple hidden>
+        <ul id="file-list"></ul>
     </div>
 
+    {{-- Privacy --}}
     <div class="form-group mt-3">
         <label for="visibility">Кто может видеть файл:</label>
-        <select name="visibility" id="visibility" class="form-control" required onchange="this.form.submit()">
+        <select name="visibility" id="visibility" class="form-control" required>
             <option value="private" {{ old('visibility') == 'private' ? 'selected' : '' }}>Private</option>
             <option value="family" {{ old('visibility') == 'family' ? 'selected' : '' }}>Family</option>
         </select>
     </div>
 
-    {{-- Если выбрано "family" --}}
-    @if(old('visibility') === 'family')
-    <div class="form-group mt-3">
+    {{-- Family --}}
+    <div id="family-container" class="form-group mt-3" style="display: none;">
         <label>Выберите семьи:</label><br>
         @foreach($families as $family)
             <div class="form-check">
@@ -35,10 +39,9 @@
             </div>
         @endforeach
     </div>
-    @endif
 
     <button type="submit" class="btn btn-primary mt-4">Загрузить</button>
 </form>
 
-    </div>
+@vite('resources/ts/app.ts')
 @endsection
