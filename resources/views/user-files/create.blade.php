@@ -30,7 +30,7 @@
     </div>
 
     {{-- Family --}}
-    <div id="family-container" class="form-group mt-3" style="display: none;">
+    <div id="family-container" class="form-group mt-3"> {{--  create dynamic opens in TS --}}
         <label>Выберите семьи:</label><br>
         @foreach($families as $family)
             <div class="form-check">
@@ -43,5 +43,5 @@
     <button type="submit" class="btn btn-primary mt-4">Загрузить</button>
 </form>
 
-@vite('resources/ts/app.ts')
+@vite('resources/ts/pages/upload_file.ts')
 @endsection

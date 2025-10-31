@@ -19,8 +19,8 @@
             <a href="{{ route('my-family.index') }}"><div class="menu family-btn">Family</div></a>
             <a href="{{ route('my-cloud.index') }}"><div class="menu user-files-btn">My files</div></a>
             <a href="{{ route('my-family-cloud.index') }}"><div class="menu family-files-btn">Family files</div></a>{{-- добавить имя семьи или если нету убрать кнопку  --}}
-            <a href="{{ route('settings.index') }}"><div class="menu setting-btn">Settings</div></a>
-            <a href="{{ route('trash.index') }}"><div class="menu trash-btn">Trash</div></a>
+            {{-- <a href="{{ route('settings.index') }}"><div class="menu setting-btn">Settings</div></a>
+            <a href="{{ route('trash.index') }}"><div class="menu trash-btn">Trash</div></a> --}}
         </aside>
 
         <main>
