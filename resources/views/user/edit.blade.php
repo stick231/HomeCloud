@@ -1,14 +1,14 @@
 @extends('layouts.home')
 
 @push('head')
-    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editUser.css') }}">
     <link rel="stylesheet" href="{{ asset('css/homecloud.css') }}">
     <title>Edit account</title>
 @endpush
 
 @section('content')
     <h1>Edit user: {{ $user->name }}</h1>
-    <form action="{{ route('user.update', $user->id) }}" method="post">
+    <form action="{{ route('user.update', $user->id) }}" class="user-edit" method="post">
         @csrf
         @method('PUT')
         <label>

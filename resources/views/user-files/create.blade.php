@@ -9,6 +9,12 @@
 @section('content')
 <h1>Загрузка файлов и папок</h1>
 
+@error('file')
+<div class="">
+    {{ $message }}
+</div>
+@enderror
+
 <form id="upload-form" class="file-form" action="{{ route('my-cloud.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
@@ -16,7 +22,7 @@
     <div id="drop-area" style="border:2px dashed #007bff; padding:20px; text-align:center;">
         <p>Перетащите файлы сюда или нажмите кнопку</p>
         <button id="browse-btn" type="button">Выбрать файлы</button>
-        <input type="file" id="file-input" multiple hidden>
+        <input name='file' type="file" id="file-input" multiple hidden>
         <ul id="file-list"></ul>
     </div>
 
@@ -40,7 +46,7 @@
         @endforeach
     </div>
 
-    <button type="submit" class="btn btn-primary mt-4">Загрузить</button>
+    <button id='send-btn' type="submit" class="btn btn-primary mt-4">Загрузить</button>
 </form>
 
 @vite('resources/ts/pages/upload_file.ts')

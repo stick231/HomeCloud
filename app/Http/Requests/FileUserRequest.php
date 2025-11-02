@@ -22,9 +22,16 @@ class FileUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|file', // до 10MB
+            'file' => 'required|file|max:100MB',
             'visibility' => 'required|string|in:public,family,private',
             'families' => 'required_if:visibility,family'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'file.required' => 'file not found.'
         ];
     }
 }

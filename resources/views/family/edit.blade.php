@@ -3,6 +3,7 @@
 @push('head')
     <title>{{ $family->name }}</title>
     <link rel="stylesheet" href="{{ asset('css/homecloud.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editFamily.css') }}">
 @endpush
 
 @section('content')

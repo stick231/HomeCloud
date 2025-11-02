@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FileUserRequest;
 use App\Models\File;
 use App\Services\CloudService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,7 +27,9 @@ class CloudController extends Controller
     }
     public function store(FileUserRequest $request, CloudService $fileService)
     {
-        $fileService->uploadFile($request);
+        if(!$fileService->uploadFile($request)){
+            return redirect()->route('my-cloud.index')->with('success', 'ERROR');
+        }
         return redirect()->route('my-cloud.index')->with('success', 'Файл успешно загружен');
     }
 
@@ -56,6 +59,11 @@ class CloudController extends Controller
         $file = File::findOrFail($id);
         $filePath = Storage::disk('private')->path($file->path);
         return response()->download($filePath, $file->name);
+    }
+
+    public function search()
+    {
+        return 4;
     }
 }
 
