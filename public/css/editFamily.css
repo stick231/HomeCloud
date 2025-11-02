@@ -1,0 +1,104 @@
+/* ---------- Стили для content ---------- */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #0d4f6c;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #0d6b8a;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+form input[type="text"],
+form input[type="file"] {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="file"]:focus {
+    border-color: #55c7f5;
+    box-shadow: 0 0 5px rgba(85, 199, 245, 0.5);
+    outline: none;
+}
+
+form input[type="submit"],
+form button {
+    background: #55c7f5;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+    background: #3db3e2;
+    transform: translateY(-2px);
+}
+
+.action.add-member {
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.action.add-member form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: #55c7f5; /* Цвет галочки */
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.form-check-input:checked {
+    transform: scale(1.2);
+}
+
+.form-check-label {
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Мобильная адаптация content */
+@media (max-width: 768px) {
+    form, .action.add-member {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}

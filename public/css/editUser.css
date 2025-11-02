@@ -1,0 +1,99 @@
+/* ---------- Стили для страницы редактирования пользователя ---------- */
+
+h1 {
+    font-size: 28px;
+    color: #0d4f6c;
+    margin-bottom: 25px;
+}
+
+.user-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    width: 100%;
+    background: #f0f8ff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+label input {
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+label input:focus {
+    border-color: #55c7f5;
+    box-shadow: 0 0 5px rgba(85,199,245,0.5);
+    outline: none;
+}
+
+input[type="submit"] {
+    padding: 12px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #55c7f5;
+    color: white;
+    transition: background 0.3s, transform 0.2s;
+}
+
+input[type="submit"]:hover {
+    background: #3db3e2;
+    transform: translateY(-2px);
+}
+
+/* Стили ошибок */
+.errors {
+    margin-top: 15px;
+    padding: 15px;
+    background: #ffe6e6;
+    color: #d32f2f;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.errors ul {
+    list-style-type: none;
+}
+
+.errors p {
+    margin-bottom: 5px;
+}
+
+/* ---------- Мобильная адаптация ---------- */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    label input {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    input[type="submit"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

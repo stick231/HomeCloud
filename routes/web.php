@@ -12,7 +12,6 @@ use App\Http\Controllers\Web\FamilyFilesController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-// home page //prefix('/cloud')
 Route::middleware(RedirectIfNotAuthenticated::class)->group(function () {
     Route::get('/', [CloudController::class, 'index']); // домашняя страница
     Route::resource('my-cloud', CloudController::class); // change route {{ $file->name }}
@@ -40,6 +39,8 @@ Route::middleware(RedirectIfNotAuthenticated::class)->group(function () {
 
     Route::post('my-cloud/file/{id}', [CloudController::class, 'downloadFile'])->name('my-cloud-file.download');
     Route::post('/my-family-cloud/file/{id}', [FamilyFilesController::class, 'downloadFile'])->name('my-family-cloud-file.download');
+    
+    Route::get('/my-cloud/search', [CloudController::class, 'search'])->name('my-cloud.search');
 });
 
 // auth

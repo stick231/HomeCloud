@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('head')
 </head>
 <body>
     <header>
         <div class="logo-div"><img class="logo" src="{{ asset('img/logo.png') }}" alt="Логотип"></div>
         <div class="search-bar">
-            <form action="" method="get">
-                <input type="text" placeholder="Search file or user"> {{-- create form and button --}}
-            </form>
+            {{-- <form action="{{ route('my-cloud.search') }}" method="get">
+                <input type="text" name="search" placeholder="Search file or user"> 
+            </form> --}}
         </div>
     </header>
 

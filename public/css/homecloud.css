@@ -96,6 +96,7 @@ footer {
 }
 
 /* -------- Мобильная адаптация -------- */
+/* -------- Мобильная адаптация -------- */
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -105,26 +106,31 @@ footer {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+        flex-wrap: wrap; /* логотип и поиск не выходят */
     }
 
     .logo {
-        width: 80px; /* Уменьшаем размер логотипа */
+        width: 80px; 
     }
 
     .search-bar input {
-        width: 100%; /* Растягиваем поле поиска */
+        width: 100%; 
+        max-width: 100%;
     }
 
     .container {
-        flex-direction: column;
+        flex-direction: column; /* aside и main один под другим */
         padding: 10px;
+        gap: 15px;
     }
 
     aside {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
+        width: 100%; 
+        flex-direction: column; 
+        align-items: stretch; /* элементы растягиваются на всю ширину */
+        justify-content: flex-start;
         padding: 10px;
+        gap: 10px;
     }
 
     main {
@@ -134,5 +140,36 @@ footer {
 
     footer {
         font-size: 14px;
+    }
+
+    /* Формы и карточки растягиваются на 100% */
+    form, .action.add-member, .family-member, .member-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .member-card {
+        margin-bottom: 15px;
+    }
+
+    /* Для ссылок и внутренних блоков карточки */
+    .member-card a {
+        width: 100%;
+        display: flex;
+        flex-direction: row; /* аватар + инфо */
+        align-items: center;
+        gap: 10px;
+    }
+
+    .member-info {
+        width: calc(100% - 80px); /* учитываем аватар */
+    }
+
+    .member-avatar {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
     }
 }
